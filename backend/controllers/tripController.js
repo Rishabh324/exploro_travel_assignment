@@ -95,7 +95,6 @@ exports.getMyOrganizings = async (req, res) => {
 exports.editTrip = async (req, res) => {
     try{
         const { id } = req.params;
-        console.log(req.body, id);
         await tripModel.findByIdAndUpdate(id, req.body);
         res.status(200).json({
             status: 'success',

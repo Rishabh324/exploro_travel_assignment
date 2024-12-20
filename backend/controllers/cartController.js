@@ -75,7 +75,6 @@ exports.removeCartItem = async (req, res) => {
             });
         }
 
-        console.log(id);
         await cartModel.updateOne(
             { user: req.body.id },
             { $pull: { trips: id } }
