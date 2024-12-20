@@ -9,7 +9,13 @@ const MyBookings = () => {
     const navigate = useNavigate();
 
     const getBookingData = async () => {
-        const response = await API.get('/booking/get-all-bookings');
+        const response = await API.get('/booking/get-all-bookings', {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+            }
+        });
         
         if(response.data.status==='success'){
             setBookingData(response.data.bookings);

@@ -67,7 +67,13 @@ const BookingForm = () => {
           let validation = validate();
           console.log(postData);
           if(validation){
-            const response = await API.post('/booking/book-trip', {postData});
+            const response = await API.post('/booking/book-trip', {postData},{
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                    'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+                }
+            });
       
             console.log(response.data);
       

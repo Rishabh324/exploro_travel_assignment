@@ -10,7 +10,14 @@ const UpcomingTrips = () => {
     const navigate = useNavigate()
 
     const getTripsData = async () => {
-        const response = await API.get('/trips/get-upcoming-trips');
+        const response = await API.get('/trips/get-upcoming-trips', {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+                }
+            }
+        );
         if(response.data.status === "success"){
             setTripsData(response.data.data.trips);
         }
@@ -23,7 +30,13 @@ const UpcomingTrips = () => {
                 navigate('/login');
                 return ;
             }else{
-                const response = await API.post('/cart/add-to-cart', { tripId: tripId });
+                const response = await API.post('/cart/add-to-cart', { tripId: tripId }, {
+                    headers: {
+                        'Access-Control-Allow-Origin': '*',
+                        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                        'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+                    }
+                });
                 if(response.data.status === "success"){
                     toast.success("Trip added to cart successfully");
                 }

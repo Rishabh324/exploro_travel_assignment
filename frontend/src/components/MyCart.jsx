@@ -11,7 +11,13 @@ const MyCart = () => {
 
     const handleRemoveFromCart = async (tripId) => {
         try{
-            const response = await API.delete(`/cart/remove/${tripId}`);
+            const response = await API.delete(`/cart/remove/${tripId}`, {
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                    'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+                }
+            });
             console.log(response);
             if(response.data.status === "success"){
                 toast.success(response.data.message);
@@ -24,7 +30,13 @@ const MyCart = () => {
 
     const getCartData = async () => {
         try{
-            const response = await API.get('/cart/get-cart-items');
+            const response = await API.get('/cart/get-cart-items', {
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                    'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+                }
+            });
             console.log(response);
             if(response.data.status==='success'){
                 setCartData(response.data.cart.trips);

@@ -11,7 +11,13 @@ const MyOrganizings = () => {
 
     const handleDeleteOrganizings = async (tripId) => {
         try{
-            const response = await API.delete(`/trips/delete-my-organizings/${tripId}`);
+            const response = await API.delete(`/trips/delete-my-organizings/${tripId}`, {
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                    'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+                }
+            });
             if(response.data.status === "success"){
                 toast.success(response.data.message);
                 setCancelModal(false);
@@ -24,7 +30,13 @@ const MyOrganizings = () => {
 
     const getOrganizingData = async () => {
         try{
-            const response = await API.get('/trips/get-my-organizings');
+            const response = await API.get('/trips/get-my-organizings', {
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                    'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+                }
+            });
             if(response.data.status==='success'){
                 setOrganizingData(response.data.trips);
             }

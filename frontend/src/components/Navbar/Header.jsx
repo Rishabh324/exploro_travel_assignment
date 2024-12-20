@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 const Header = () => {
   const { isMobile, toggleSidebar, sidebarOpen } = useScreen();
   const { user } = useSelector(state=>state.auth);
-  console.log(user);
+  
   return (
     <div className="bg-blue-400 font-bold w-[100vw] flex flex-row items-center justify-between p-4">
       {isMobile ? (

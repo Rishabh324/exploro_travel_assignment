@@ -12,7 +12,13 @@ const TripDetails = () => {
 
     const getTrip = async () => {
         try {
-            const response = await API.get(`/trips/get-trip/${id}`);
+            const response = await API.get(`/trips/get-trip/${id}`,{
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                    'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+                }
+            });
 
             if(response.data.status === "success"){
                 setTripData(response.data.trip);

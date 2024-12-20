@@ -16,7 +16,13 @@ const BookingDetail = () => {
 
     const getBooking = async () => {
         try {
-            const response = await API.get(`/booking/get-booking/${id}`);
+            const response = await API.get(`/booking/get-booking/${id}`,{
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                    'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+                }
+            });
 
             console.log(response);
             if(response.data.status === "success"){
@@ -29,7 +35,13 @@ const BookingDetail = () => {
 
     const handleCancelBooking = async (bookingId) => {
         try{
-            const response = await API.delete(`/booking/cancel/${bookingId}`);
+            const response = await API.delete(`/booking/cancel/${bookingId}`, {
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                    'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+                }
+            });
             console.log(response);
             if(response.data.status === "success"){
                 toast.success(response.data.message);
