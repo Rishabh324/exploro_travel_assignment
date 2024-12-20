@@ -7,16 +7,10 @@ export const userLogin = createAsyncThunk(
     'auth/login',
     async ({ email, password, role }, { rejectWithValue }) => {
         try {
-            const { data } = await API.post('/auth/login', { email: email, password: password, role: role }, {
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-                    'Access-Control-Allow-Headers': 'Content-Type, Authorization'
-                }
-            });
+            const { data } = await API.post('/auth/login', { email: email, password: password, role: role });
             if (data.status === "Success") {
                 localStorage.setItem('token', data.token);
-                window.location.assign(`/`);
+                window.location.replace('/dashboard');
                 toast.success(data.message);
             }
 
@@ -39,13 +33,7 @@ export const userRegister = createAsyncThunk(
     async ({ e, name, email, password, phone, role }, { rejectWithValue }) => {
         try {
             e.preventDefault();
-            const { data } = await API.post('/auth/register', { name, email, password, phone, role }, {
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-                    'Access-Control-Allow-Headers': 'Content-Type, Authorization'
-                }
-            });
+            const { data } = await API.post('/auth/register', { name, email, password, phone, role });
             if (data.status === "Success") {
                 window.location.replace('/login');
                 toast.success(data.message);
@@ -72,13 +60,7 @@ export const currentUser = createAsyncThunk(
     'auth/currentUser',
     async ({ rejectWithValue }) => {
         try {
-            const { data } = await API.get('/auth/currentUser', {
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-                    'Access-Control-Allow-Headers': 'Content-Type, Authorization'
-                }
-            });
+            const { data } = await API.get('/auth/currentUser');
             if (data) return data;
         }
         catch (err) {

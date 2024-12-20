@@ -7,7 +7,6 @@ import { useSelector } from 'react-redux'
 const Home = () => {
     const navigate = useNavigate();
     const {user} = useSelector(state => state.auth);
-    console.log(user);
     if(user) navigate('/dashboard');
     return (
         <Layout>

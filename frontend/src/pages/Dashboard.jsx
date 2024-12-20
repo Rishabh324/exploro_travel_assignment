@@ -5,8 +5,7 @@ import Layout from '../components/Layout';
 
 const Dashboard = () => {
   const { user } = useSelector(state => state.auth);
-  console.log(user);
-  
+
   return (
     <Layout>
       {user?.role==="user" ? <UserDashboard /> : <OrganizerDashboard />}
