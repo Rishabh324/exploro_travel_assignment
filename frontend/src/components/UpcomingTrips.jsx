@@ -25,7 +25,6 @@ const UpcomingTrips = () => {
 
     const handleAddCart = async (tripId) => {
         try{
-            console.log(user);
             if(!user){
                 navigate('/login');
                 return ;

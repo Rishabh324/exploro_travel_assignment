@@ -24,7 +24,6 @@ const BookingDetail = () => {
                 }
             });
 
-            console.log(response);
             if(response.data.status === "success"){
                 setBookingData(response.data.booking);
             }
@@ -42,7 +41,7 @@ const BookingDetail = () => {
                     'Access-Control-Allow-Headers': 'Content-Type, Authorization'
                 }
             });
-            console.log(response);
+            
             if(response.data.status === "success"){
                 toast.success(response.data.message);
                 setCancelModal(false);

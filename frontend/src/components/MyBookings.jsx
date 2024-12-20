@@ -21,7 +21,6 @@ const MyBookings = () => {
             setBookingData(response.data.bookings);
         }
     };
-    console.log(bookingData);
 
     useEffect(()=>{
         getBookingData();

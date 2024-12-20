@@ -18,7 +18,7 @@ const MyCart = () => {
                     'Access-Control-Allow-Headers': 'Content-Type, Authorization'
                 }
             });
-            console.log(response);
+            
             if(response.data.status === "success"){
                 toast.success(response.data.message);
                 getCartData();

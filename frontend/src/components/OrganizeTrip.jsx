@@ -30,7 +30,6 @@ const OrganizeTrip = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try{
-      console.log(formData);
       const response = await API.post('/trips/create-trip', 
         formData,
         {

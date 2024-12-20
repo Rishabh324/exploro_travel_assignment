@@ -24,7 +24,6 @@ const EditTrip = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try{
-      console.log(formData);
       const response = await API.patch(`/trips/edit-trip/${id}`, 
         formData,
         {

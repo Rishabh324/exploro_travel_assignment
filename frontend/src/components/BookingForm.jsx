@@ -15,9 +15,7 @@ const BookingForm = () => {
     const addPassenger = () => {
         console.log(postData.passengers);
         if(postData.passengers.length < tripData?.availableSlots){
-            console.log("Adding passenger");
             setPostData({ ...postData, passengers: [...postData.passengers, { name: '', age: null }] });
-            
         }
         else{
             toast.warning("No more slots available.");
@@ -64,28 +62,26 @@ const BookingForm = () => {
       const handleSubmit = async (e) => {
         e.preventDefault();
         try{
-          let validation = validate();
-          console.log(postData);
-          if(validation){
-            const response = await API.post('/booking/book-trip', {postData},{
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-                    'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+            let validation = validate();
+            if(validation){
+                const response = await API.post('/booking/book-trip', {postData},{
+                    headers: {
+                        'Access-Control-Allow-Origin': '*',
+                        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                        'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+                    }
+                });
+    
+      
+                if(response.data.status === "success") {
+                    toast.success("Expense added successfully");
+                    navigate('/dashboard');
+                    setPostData({ user: user?._id, trip: tripData?._id, passengers: [{name: '', age: null}] });
                 }
-            });
-      
-            console.log(response.data);
-      
-            if(response.data.status === "success") {
-                toast.success("Expense added successfully");
-                navigate('/dashboard');
-                setPostData({ user: user?._id, trip: tripData?._id, passengers: [{name: '', age: null}] });
-        }
-            else{
-                toast.error("Failed to add expense");
+                else{
+                    toast.error("Failed to add expense");
+                }
             }
-          }
         }catch(err) {
           console.log(err);
         }
