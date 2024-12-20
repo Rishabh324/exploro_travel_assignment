@@ -1,4 +1,4 @@
-// import OrganizerDashboard from '../components/OrganizerDashboard'
+import OrganizerDashboard from '../components/OrganizerDashboard'
 import UserDashboard from '../components/UserDashboard'
 import { useSelector } from 'react-redux';
 import Layout from '../components/Layout';
@@ -8,8 +8,7 @@ const Dashboard = () => {
 
   return (
     <Layout>
-      {/* {user?.role==="user" ? <UserDashboard /> : <OrganizerDashboard />} */}
-      <UserDashboard />
+      {user?.role==="user" ? <UserDashboard /> : <OrganizerDashboard />}
     </Layout>
   )
 }
