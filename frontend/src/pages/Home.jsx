@@ -1,9 +1,14 @@
 import React from "react";
 import Layout from "../components/Layout";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Home = () => {
     const navigate = useNavigate();
+    const { user } = useSelector(state=>state.auth);
+    if(user) {
+        navigate('/dashboard');
+    }
   return (
     <Layout>
         <div className="lay -m-3 bg-gray-100 flex flex-col justify-between">

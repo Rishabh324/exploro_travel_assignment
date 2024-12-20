@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 const Sidebar = () => {
     const { isMobile, sidebarOpen } = useScreen();
     const { user } = useSelector(state=>state.auth);
+    console.log(isMobile, sidebarOpen);
     
     const logoutHandler = () => {
         localStorage.clear();
