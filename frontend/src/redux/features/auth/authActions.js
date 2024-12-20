@@ -4,11 +4,17 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const userLogin = createAsyncThunk(
-    'auth/login',
+    '/login',
     async ({ email, password, role }, { rejectWithValue }) => {
         try {
             console.log("actions", email, password, role);
-            const { data } = await API.post('/auth/login', { email: email, password: password, role: role });
+            const { data } = await API.post('/auth/login', { email: email, password: password, role: role }, {
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                    'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+                }
+            });
             if (data.status === "Success") {
                 localStorage.setItem('token', data.token);
                 window.location.replace('/dashboard');
@@ -34,7 +40,13 @@ export const userRegister = createAsyncThunk(
     async ({ e, name, email, password, phone, role }, { rejectWithValue }) => {
         try {
             e.preventDefault();
-            const { data } = await API.post('/auth/register', { name, email, password, phone, role });
+            const { data } = await API.post('/auth/register', { name, email, password, phone, role }, {
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                    'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+                }
+            });
             if (data.status === "Success") {
                 window.location.replace('/login');
                 toast.success(data.message);
@@ -61,7 +73,13 @@ export const currentUser = createAsyncThunk(
     'auth/currentUser',
     async ({ rejectWithValue }) => {
         try {
-            const { data } = await API.get('/auth/currentUser');
+            const { data } = await API.get('/auth/currentUser', {
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                    'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+                }
+            });
             if (data) return data;
         }
         catch (err) {
