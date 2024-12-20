@@ -47,7 +47,10 @@ const UpcomingTrips = () => {
                         (
                             <div key={index} className='hover:border-blue-400 cursor-pointer border-2 shadow-lg p-4 my-4 rounded-xl'>
                                 <div className='flex justify-between items-center'>
-                                    <h1 className='text-xl font-semibold'>{trip.tripName}</h1>
+                                    <h1 className='text-xl font-semibold'>{trip.tripName}<span className={`
+                                    ${trip?.status==='ACTIVE' && "border-green-600 bg-green-400"} 
+                                    ${trip?.status==='CANCELLED' && "border-red-600 bg-red-400"} 
+                                    border-2 px-4 ml-2 rounded-lg text-xs font-normal`}>{trip?.status}</span></h1>
                                     <div className='flex gap-4 items-center'>
                                         <p>Rs. {trip.tripPrice}</p>
                                         <button className='px-4 py-1 bg-blue-400 rounded-lg border-2 border-blue-400' onClick={()=>navigate('/browse-trips/'+trip._id)}>View Details</button>

@@ -40,8 +40,6 @@ exports.registerController = async (req, res) => {
 
 exports.loginController = async (req, res) => {
     try {
-
-        // check if user exists
         const user = await userModel.findOne({ email: req.body.email });
         if (!user) {
             return res.status(404).json({
@@ -50,7 +48,13 @@ exports.loginController = async (req, res) => {
             })
         }
 
-        //compare password
+        if(user.role !== req.body.role){
+            return res.status(401).json({
+                status: "Failed",
+                message: "Invalid Role"
+            })
+        }
+        
         const isPasswordCorrect = await bcrypt.compare(req.body.password, user.password);
         if (!isPasswordCorrect) {
             return res.status(500).json({

@@ -117,7 +117,6 @@ exports.bookTrip = async (req, res) => {
 
 exports.cancelBooking = async (req, res) => {
     try {
-        console.log(req.params.id);
         const booking = await bookingModel.findById(req.params.id);
         if (!booking) {
             return res.status(404).json({
@@ -153,18 +152,16 @@ exports.cancelBooking = async (req, res) => {
         const daysBeforeStart = Math.floor((tripStartDate - currentDate) / msPerDay);
 
         let refundPercentage = 0;
-
         if (daysBeforeStart >= 15) {
-            refundPercentage = 100;
+          refundPercentage = 100;
         } else if (daysBeforeStart >= 7) {
-            refundPercentage = 50;
+          refundPercentage = 50;
         } else {
-            refundPercentage = 0;
+          refundPercentage = 0;
         }
-
+          
         payment.status = 'REFUNDED';
         payment.refundAmount = (payment.amount * refundPercentage) / 100;
-
         
         await payment.save();
 

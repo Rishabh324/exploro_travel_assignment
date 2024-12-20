@@ -14,12 +14,11 @@ export const userLogin = createAsyncThunk(
                 toast.success(data.message);
             }
 
-            console.log(data);
             return data;
         }
         catch (err) {
-            console.log(err);
             if (err.response && err.response.data.message) {
+                toast.error(err.response.data.message);
                 return rejectWithValue(err.response.data.message);
             }
             else {
@@ -38,6 +37,9 @@ export const userRegister = createAsyncThunk(
             if (data.status === "Success") {
                 window.location.replace('/login');
                 toast.success(data.message);
+            }
+            else {
+                toast.error(data.message);
             }
             console.log(data);
             return data;
