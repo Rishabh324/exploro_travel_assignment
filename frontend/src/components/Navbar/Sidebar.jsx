@@ -15,7 +15,7 @@ const Sidebar = () => {
     }
 
     return (
-        <div className={`${isMobile && !sidebarOpen ? "hidden": ""} ${isMobile && sidebarOpen ? "lay absolute w-7/12": ""} min-w-fit w-3/12 p-6 flex flex-col justify-between bg-blue-300`}>
+        <div className={`${(isMobile && !sidebarOpen) ? "hidden": ""} ${(isMobile && sidebarOpen) ? "lay absolute w-7/12": ""} w-3/12 p-6 flex flex-col justify-between bg-blue-300`}>
             <div className="flex flex-col">
                 <Link to='/' className="p-3">Home</Link>
                 {(user?.role==="user" || user?.role==='organizer') && <Link to='/dashboard' className="p-3">Dashboard</Link>}
