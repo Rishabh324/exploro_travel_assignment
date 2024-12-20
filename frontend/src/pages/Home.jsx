@@ -1,4 +1,3 @@
-import React from 'react'
 import Layout from '../components/Layout'
 import '../App.css'
 import { useNavigate } from 'react-router-dom'
@@ -7,7 +6,7 @@ import { useSelector } from 'react-redux'
 const Home = () => {
     const navigate = useNavigate();
     const {user} = useSelector(state => state.auth);
-    if(user) navigate('/dashboard');
+    
     return (
         <Layout>
             <div className="homepage-container">
