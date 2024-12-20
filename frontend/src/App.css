@@ -18,55 +18,5 @@
 } */
 
 .lay{
-    height: 91.5vh;
-}
-
-.homepage-container {
-    text-align: center;
-    font-family: Arial, sans-serif;
-    padding: 20px;
-}
-
-.homepage-header {
-    background-color: #4caf50;
-    color: white;
-    padding: 20px 0;
-}
-
-.about-company {
-    margin: 20px auto;
-    max-width: 600px;
-    text-align: left;
-}
-
-.action-buttons {
-    margin-top: 20px;
-}
-
-.btn {
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.login-btn {
-    background-color: #007bff;
-    color: white;
-}
-
-.register-btn {
-    background-color: #28a745;
-    color: white;
-}
-
-.guest-btn {
-    background-color: #ffc107;
-    color: black;
-}
-
-.btn:hover {
-    opacity: 0.8;
+    height: 91.6vh;
 }

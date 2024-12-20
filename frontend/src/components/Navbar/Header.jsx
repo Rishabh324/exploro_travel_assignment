@@ -8,7 +8,7 @@ const Header = () => {
   const { user } = useSelector(state=>state.auth);
   
   return (
-    <div className="bg-blue-400 font-bold w-[100vw] flex flex-row items-center justify-between p-4">
+    <div className="bg-blue-600 font-bold w-[100vw] text-white flex flex-row items-center justify-between p-4">
       {isMobile ? (
         <div>
           {sidebarOpen ? <ImCross className="text-2xl text-white pl-2 cursor-pointer" onClick={toggleSidebar} /> : <BiMenu className="text-3xl text-white cursor-pointer" onClick={toggleSidebar} />}

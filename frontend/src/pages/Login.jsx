@@ -11,7 +11,7 @@ const Login = () => {
 
     return (
         <div className="p-4 flex h-screen justify-center items-center bg-blue-400">
-            <div className="bg-blue-200 rounded-lg p-4">
+            <div className="bg-blue-200 lg:8/12 md:w-4/12 rounded-lg p-4">
                 <h1 className="text-3xl text-center">Login</h1>
                 <form className="p-4" onSubmit={(e) => {
                     e.preventDefault();
@@ -77,7 +77,7 @@ const Login = () => {
                     <hr className="border-1 border-black mt-4 mb-2"></hr>
                     <p className="text-center">Or</p>
                 </form>
-                <div className="px-4">
+                <div className="px-4 mb-4">
                     <button className="rounded-lg bg-blue-500 p-2 w-full text-center" onClick={()=>{navigate('/')}}>Sign in as Guest</button>
                 </div>
             </div>
