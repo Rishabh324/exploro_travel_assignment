@@ -53,7 +53,7 @@ app.use("/api/v1/auth", require("./routes/authRoutes"));
 app.use("/api/v1/trips", require("./routes/tripRoutes"));
 app.use("/api/v1/cart", require("./routes/cartRoutes"));
 app.use("/api/v1/booking", require("./routes/bookingRoutes"));
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use('/api/v1/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 
 //port
