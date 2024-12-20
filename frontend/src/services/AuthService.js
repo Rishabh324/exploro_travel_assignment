@@ -4,6 +4,7 @@ import store from "../redux/store";
 export const handleLogin = (e, email, password, role) => {
     e.preventDefault();
     try {
+        console.log(email, password, role);
         if (!email || !password || !role) return alert("Provide All Fields.");
         store.dispatch(userLogin({ email, password, role }));
     }
