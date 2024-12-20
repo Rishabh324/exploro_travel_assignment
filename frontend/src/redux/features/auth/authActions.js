@@ -15,6 +15,7 @@ export const userLogin = createAsyncThunk(
                     'Access-Control-Allow-Headers': 'Content-Type, Authorization'
                 }
             });
+            console.log(data);
             if (data.status === "Success") {
                 localStorage.setItem('token', data.token);
                 window.location.replace('/dashboard');
