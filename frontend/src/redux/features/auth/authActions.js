@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const userLogin = createAsyncThunk(
-    '/login',
+    'auth/login',
     async ({ email, password, role }, { rejectWithValue }) => {
         try {
             console.log("actions", email, password, role);
