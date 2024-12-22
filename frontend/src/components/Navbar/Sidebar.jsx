@@ -26,6 +26,7 @@ const Sidebar = () => {
                     <Link to='/browse-trips' className="p-3">Browse Upcoming Trips</Link>
                     )
                 }
+                <button className="p-3 text-justify" onClick={()=> window.open(`${import.meta.env.VITE_REACT_APP_BASEURL}/api-docs`, '_blank') }>Documentation</button>
             </div>
             <Link to='/login' className="p-3 bg-red-500 rounded-lg border-black border-2" onClick={logoutHandler}>Logout</Link>
         </div>
