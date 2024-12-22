@@ -16,7 +16,7 @@ const Header = () => {
       ) : null}
       <div className="flex justify-between w-full items-center">
         <h1 className="text-center text-3xl ">Travel Application</h1>
-        {user ? <p>Welcome, {user.name}</p> : <p>Welcome, Guest</p>}
+        {/* {user ? <p>Welcome, {user.name}</p> : <p>Welcome, Guest</p>} */}
       </div>
       {isMobile ? <div></div> : null}
     </div>

@@ -7,7 +7,6 @@ import { useSelector } from "react-redux";
 const Sidebar = () => {
     const { isMobile, sidebarOpen } = useScreen();
     const { user } = useSelector(state=>state.auth);
-    console.log(isMobile, sidebarOpen);
     
     const logoutHandler = () => {
         localStorage.clear();
@@ -19,7 +18,7 @@ const Sidebar = () => {
         <div className={`w-3/12 p-6 flex flex-col justify-between bg-blue-300 ${(isMobile && !sidebarOpen) ? "hidden": ""} ${(isMobile && sidebarOpen) ? "lay absolute w-7/12": ""}`}>
             <div className="flex flex-col">
                 <Link to='/' className="p-3">Home</Link>
-                {(user?.role==="user" || user?.role==='organizer') && <Link to='/dashboard' className="p-3">Dashboard</Link>}
+                <Link to='/dashboard' className="p-3">Dashboard</Link>
                 {user?.role==="organizer" ? (
                     <Link to='/create-trip' className="p-3">Create Trip</Link>
                 ) : (

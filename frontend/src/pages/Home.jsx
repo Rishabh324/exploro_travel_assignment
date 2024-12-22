@@ -1,26 +1,11 @@
-import React from "react";
 import Layout from "../components/Layout";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-
 const Home = () => {
     const navigate = useNavigate();
-    const { user } = useSelector(state=>state.auth);
-    if(user) {
-        navigate('/dashboard');
-    }
+
   return (
     <Layout>
         <div className="lay -m-3 bg-gray-100 flex flex-col justify-between">
-        {/* Header
-        <header className="bg-blue-600 text-white py-4 shadow-lg">
-            <div className="container mx-auto text-center">
-            <h1 className="text-3xl font-bold">About Us</h1>
-            <p className="mt-1 text-lg">Welcome to Travel Haven</p>
-            </div>
-        </header> */}
-
-        {/* Main Content */}
         <main className="container mx-auto px-4 py-10">
             <div className="bg-white shadow-md rounded-lg p-6">
             <h1 className="text-3xl font-bold">About Us</h1>

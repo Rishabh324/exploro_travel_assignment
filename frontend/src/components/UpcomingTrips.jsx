@@ -7,8 +7,8 @@ import { useSelector } from 'react-redux';
 const UpcomingTrips = () => {
     const [tripsData, setTripsData] = useState([]);
     const { user } = useSelector(state => state.auth);
-    const navigate = useNavigate()
-
+    const navigate = useNavigate();
+    console.log(user);
     const getTripsData = async () => {
         const response = await API.get('/trips/get-upcoming-trips', {
             headers: {
@@ -26,6 +26,7 @@ const UpcomingTrips = () => {
     const handleAddCart = async (tripId) => {
         try{
             if(!user){
+                toast.error("Please login to add trip to cart");
                 navigate('/login');
                 return ;
             }else{
@@ -70,7 +71,7 @@ const UpcomingTrips = () => {
                                 </div>
                                 <div className='flex justify-between mt-2'>
                                     <p>{new Date(trip.tripDate).toLocaleDateString('en-CA')}</p>
-                                    {user?.role==="user" && <button className='px-4 py-1 border-2 border-blue-400 rounded-lg hover:bg-gray-200' onClick={()=>handleAddCart(trip._id)}>Add to cart</button>}
+                                    <button className='px-4 py-1 border-2 border-blue-400 rounded-lg hover:bg-gray-200' onClick={()=>handleAddCart(trip._id)}>Add to cart</button>
                                 </div>
                             </div>
                         )

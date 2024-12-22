@@ -10,6 +10,7 @@ export const userLogin = createAsyncThunk(
             const { data } = await API.post('/auth/login', { email: email, password: password, role: role });
             if (data.status === "Success") {
                 localStorage.setItem('token', data.token);
+                localStorage.setItem('user', JSON.stringify(data.user));
                 window.location.replace('/dashboard');
                 toast.success(data.message);
             }
